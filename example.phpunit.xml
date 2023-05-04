@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit>
+    <php>
+        <env name="UrlForTesting" value="http://localhost:8000/comment_server.php"/>
+    </php>
+</phpunit>
