@@ -20,7 +20,7 @@ Overall, this code provides a lightweight way to perform simple HTTP requests in
 ## Install
 
 ```
-composer require myth21/lib:dev-main
+composer require myth21/context-http-requester:dev-main
 ```
 
 ## Usage
@@ -60,5 +60,5 @@ php -S localhost:8000 -f comment_server.php
 
 Run test, example:
 ```
-php vendor/bin/phpunit vendor/myth21/lib/CommentClientTest.php -c vendor/myth21/lib/example.phpunit.xml --color --do-not-cache-result
+php vendor/bin/phpunit vendor/myth21/context-http-requester/CommentClientTest.php -c vendor/myth21/context-http-requester/example.phpunit.xml --color --do-not-cache-result
 ```
