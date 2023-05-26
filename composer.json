@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "myth21\\context-http-requester\\": "/"
+            "myth21\\HttpRequester\\": "/"
         }
     },
     "require-dev": {
