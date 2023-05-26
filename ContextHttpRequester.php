@@ -6,6 +6,12 @@ namespace myth21\lib;
 
 use JsonException;
 
+use function file_get_contents;
+use function json_encode;
+use function stream_context_create;
+
+use const JSON_THROW_ON_ERROR;
+
 /**
  * Class abstracts the HTTP communication through stream contexts in PHP.
  * It provides convenient methods to send GET, POST, and PUT requests, and set request headers.
@@ -166,6 +172,22 @@ final class ContextHttpRequester implements HttpRequesterInterface
     {
         $streamContext = stream_context_create(['http' => [
             'method' => 'PUT',
+            'header' => $this->getPreparedRequestHeaders(),
+            'content' => json_encode($body, JSON_THROW_ON_ERROR),
+        ]]);
+        $response = file_get_contents($url, $this->useIncludePath, $streamContext);
+        $this->responseHeaders = $http_response_header;
+        return $response;
+    }
+
+    /**
+     * Send PATCH request.
+     * @throws JsonException
+     */
+    public function sendPatchRequest(string $url, array $body): string|false
+    {
+        $streamContext = stream_context_create(['http' => [
+            'method' => 'PATCH',
             'header' => $this->getPreparedRequestHeaders(),
             'content' => json_encode($body, JSON_THROW_ON_ERROR),
         ]]);
